@@ -1,0 +1,121 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:BasicMvvmSample.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:CompileBindings="True"
+        x:DataType="vm:MainWindowViewModel"
+        x:Class="BasicMvvmSample.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Work with stack"
+        Background="#F9F9F9">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Ввод -->
+        <StackPanel Grid.Column="1" Spacing="15">
+            <TextBlock Text="Stack"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="#333"
+                       Margin="0 0 0 10" />
+
+            <TextBlock Text="Enter value:"
+                       FontSize="16"
+                       Foreground="#555" />
+            <TextBox Text="{Binding SimpleViewModel.ValueData}"
+                     FontSize="14"
+                     Padding="8"
+                     BorderBrush="#CCC"
+                     BorderThickness="1"
+                     Width="250"
+                     HorizontalAlignment="Left" />
+        </StackPanel>
+
+        <!-- Стек -->
+        <StackPanel Grid.Column="0" Spacing="15" VerticalAlignment="Bottom">
+            <TextBlock Text="Current Stack:"
+                       FontSize="16"
+                       FontWeight="Bold"
+                       Foreground="#333"
+                       Margin="0 0 0 10" />
+
+            <!-- Нижняя часть с кастомной рамкой -->
+            <Grid Width="150"> <!-- Устанавливаем фиксированную ширину для контейнера с рамкой -->
+                <!-- Кастомная рамка без верхней границы -->
+                <Path Data="M0,0 L0,350 L150,350 L150,0"
+                      Stroke="#0DE0E7"
+                      StrokeThickness="3"
+                      Fill="Transparent" />
+
+                <!-- Блоки стека (ItemsControl) с фиксированной шириной -->
+                <ItemsControl ItemsSource="{Binding SimpleViewModel.StackItems}"
+                              Width="140"
+                              VerticalAlignment="Bottom">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border 
+                                    CornerRadius="15"
+                                    Background="#3EBAF4"
+                                    Margin="3">
+                                <TextBlock Text="{Binding}"
+                                           FontSize="18"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           Padding="10"
+                                           Foreground="white" />
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </StackPanel>
+
+        <!-- Кнопки (перемещены в третью колонку) -->
+        <StackPanel Grid.Column="0"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Left"
+                    Spacing="10"
+                    Margin="0,0,0,0">
+            <Button Content="Push"
+                    Command="{Binding SimpleViewModel.PushCommand}"
+                    Background="#4CAF50"
+                    Foreground="White"
+                    FontSize="14"
+                    Padding="8"
+                    BorderBrush="#388E3C"
+                    BorderThickness="1"
+                    CornerRadius="4"
+                    Width="100" />
+            <Button Content="Pop"
+                    Command="{Binding SimpleViewModel.PopCommand}"
+                    Background="#F44336"
+                    Foreground="White"
+                    FontSize="14"
+                    Padding="8"
+                    BorderBrush="#D32F2F"
+                    BorderThickness="1"
+                    CornerRadius="4"
+                    Width="100" />
+            <Button Content="Clear"
+                    Command="{Binding SimpleViewModel.ClearCommand}"
+                    Background="#2196F3"
+                    Foreground="White"
+                    FontSize="14"
+                    Padding="8"
+                    BorderBrush="#1976D2"
+                    BorderThickness="1"
+                    CornerRadius="4"
+                    Width="100" />
+        </StackPanel>
+    </Grid>
+</Window>
