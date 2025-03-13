@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oJhHvaLR8yo=",
+  "dgSpecHash": "30qDCSXR8DA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\sonia\\Documents\\институт\\3 курс\\Информационные технологии 2\\StackAvalonia-main2\\BasicMvvmSample.csproj",
+  "projectFilePath": "C:\\Users\\sonia\\Documents\\институт\\3 курс\\Информационные технологии 2\\Task1\\BasicMvvmSample.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sonia\\.nuget\\packages\\avalonia\\11.0.0\\avalonia.11.0.0.nupkg.sha512",
     "C:\\Users\\sonia\\.nuget\\packages\\avalonia.angle.windows.natives\\2.1.0.2023020321\\avalonia.angle.windows.natives.2.1.0.2023020321.nupkg.sha512",

@@ -4665,11 +4665,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sonia\\Documents\\институт\\3 курс\\Информационные технологии 2\\StackAvalonia-main2\\BasicMvvmSample.csproj",
+      "projectUniqueName": "C:\\Users\\sonia\\Documents\\институт\\3 курс\\Информационные технологии 2\\Task1\\BasicMvvmSample.csproj",
       "projectName": "BasicMvvmSample",
-      "projectPath": "C:\\Users\\sonia\\Documents\\институт\\3 курс\\Информационные технологии 2\\StackAvalonia-main2\\BasicMvvmSample.csproj",
+      "projectPath": "C:\\Users\\sonia\\Documents\\институт\\3 курс\\Информационные технологии 2\\Task1\\BasicMvvmSample.csproj",
       "packagesPath": "C:\\Users\\sonia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sonia\\Documents\\институт\\3 курс\\Информационные технологии 2\\StackAvalonia-main2\\obj\\",
+      "outputPath": "C:\\Users\\sonia\\Documents\\институт\\3 курс\\Информационные технологии 2\\Task1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sonia\\AppData\\Roaming\\NuGet\\NuGet.Config"
