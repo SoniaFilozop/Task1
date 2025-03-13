@@ -28,7 +28,6 @@
                        FontWeight="Bold"
                        Foreground="#333"
                        Margin="0 0 0 10" />
-
             <TextBlock Text="Enter value:"
                        FontSize="16"
                        Foreground="#555" />
@@ -48,16 +47,11 @@
                        FontWeight="Bold"
                        Foreground="#333"
                        Margin="0 0 0 10" />
-
-            <!-- Нижняя часть с кастомной рамкой -->
-            <Grid Width="150"> <!-- Устанавливаем фиксированную ширину для контейнера с рамкой -->
-                <!-- Кастомная рамка без верхней границы -->
+            <Grid Width="150"> 
                 <Path Data="M0,0 L0,350 L150,350 L150,0"
                       Stroke="#0DE0E7"
                       StrokeThickness="3"
                       Fill="Transparent" />
-
-                <!-- Блоки стека (ItemsControl) с фиксированной шириной -->
                 <ItemsControl ItemsSource="{Binding SimpleViewModel.StackItems}"
                               Width="140"
                               VerticalAlignment="Bottom">
@@ -80,7 +74,7 @@
             </Grid>
         </StackPanel>
 
-        <!-- Кнопки (перемещены в третью колонку) -->
+        <!-- Кнопки -->
         <StackPanel Grid.Column="0"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Left"
