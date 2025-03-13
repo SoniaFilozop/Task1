@@ -538,3 +538,4 @@ C:\Users\sonia\Documents\институт\3 курс\Информационны�
 C:\Users\sonia\Documents\институт\3 курс\Информационные технологии 2\Task1\obj\Debug\net6.0\BasicMvv.337554D6.Up2Date
 C:\Users\sonia\Documents\институт\3 курс\Информационные технологии 2\Task1\obj\Debug\net6.0\BasicMvvmSample.genruntimeconfig.cache
 C:\Users\sonia\Documents\институт\3 курс\Информационные технологии 2\Task1\obj\Debug\net6.0\ref\BasicMvvmSample.dll
+C:\Users\sonia\Documents\институт\3 курс\Информационные технологии 2\Task1\obj\Debug\net6.0\BasicMvvmSample.sourcelink.json

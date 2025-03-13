@@ -34,7 +34,7 @@ namespace BasicMvvmSample.ViewModels
             }
         }
 
-        public List<string> StackItems => _stack.ToList().Select(static x => x.ToString()).Reverse().ToList();
+        public List<string?> StackItems => _stack.ToList().Select(static x => x.ToString()).Reverse().ToList();
 
         public ICommand PushCommand { get; }
         public ICommand PopCommand { get; }
