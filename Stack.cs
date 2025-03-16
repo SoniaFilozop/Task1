@@ -1,64 +1,82 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace StackApp
 {
+    public class Node<T>
+    {
+        public T Data { get; }
+        public Node<T>? Next { get; }
+
+        public Node(T data, Node<T>? next)
+        {
+            Data = data;
+            Next = next;
+        }
+    }
+
     public class CustomStack<T> where T : notnull
     {
-        private readonly List<T> _items = new List<T>();
-        private T? _topItem; 
+        private Node<T>? _top;
+        private int _count;
 
         public CustomStack()
         {
-            _topItem = default(T); 
+            _top = null;
+            _count = 0;
         }
 
         public void Push(T item)
         {
-            _items.Add(item);
-            _topItem = item;
+            _top = new Node<T>(item, _top);
+            _count++;
         }
 
         public T Pop()
         {
-            if (_items.Count == 0)
+            if (_top == null)
                 throw new InvalidOperationException("Stack is empty");
 
-            var item = _items[_items.Count - 1];
-            _items.RemoveAt(_items.Count - 1);
-
-            if (_items.Count > 0)
-                _topItem = _items[_items.Count - 1];
-            else
-                _topItem = default(T); 
+            T item = _top.Data;
+            _top = _top.Next;
+            _count--;
 
             return item;
         }
 
         public void Clear()
         {
-            _items.Clear();
-            _topItem = default(T); 
+            _top = null;
+            _count = 0;
         }
 
-        public bool IsEmpty => _items.Count == 0;
+        public bool IsEmpty => _top == null;
 
-        public int Count => _items.Count;
+        public int Count => _count;
 
         public T TopItem
         {
             get
             {
-                if (_items.Count == 0)
+                if (_top == null)
                     throw new InvalidOperationException("Stack is empty");
 
-                return _topItem!;
+                return _top.Data;
             }
         }
 
-        public List<T> ToList()
+        public T[] ToArray()
         {
-            return new List<T>(_items);
+            T[] result = new T[_count];
+            Node<T>? current = _top;
+            int index = _count - 1;
+
+            while (current != null)
+            {
+                result[index--] = current.Data;
+                current = current.Next;
+            }
+
+            return result;
         }
     }
 }

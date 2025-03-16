@@ -4,13 +4,14 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using ReactiveUI;
 using StackApp;
 
 namespace BasicMvvmSample.ViewModels
 {
     public class SimpleViewModel : INotifyPropertyChanged
     {
-        private readonly CustomStack<object> _stack = new CustomStack<object>();
+        private readonly CustomStack<string> _stack = new CustomStack<string>();
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -34,7 +35,7 @@ namespace BasicMvvmSample.ViewModels
             }
         }
 
-        public List<string?> StackItems => _stack.ToList().Select(static x => x.ToString()).Reverse().ToList();
+        public List<string> StackItems => _stack.ToArray().Reverse().ToList();
 
         public ICommand PushCommand { get; }
         public ICommand PopCommand { get; }
@@ -42,10 +43,11 @@ namespace BasicMvvmSample.ViewModels
 
         public SimpleViewModel()
         {
-            PushCommand = new RelayCommand(Push);
-            PopCommand = new RelayCommand(Pop);
-            ClearCommand = new RelayCommand(Clear);
+            PushCommand = ReactiveCommand.Create(Push);
+            PopCommand = ReactiveCommand.Create(Pop);
+            ClearCommand = ReactiveCommand.Create(Clear);
         }
+
 
         private void Push()
         {
@@ -58,7 +60,7 @@ namespace BasicMvvmSample.ViewModels
 
         private void Pop()
         {
-            if (_stack.Count > 0)
+            if (!_stack.IsEmpty)
             {
                 _stack.Pop();
                 RaisePropertyChanged(nameof(StackItems));
@@ -71,22 +73,4 @@ namespace BasicMvvmSample.ViewModels
             RaisePropertyChanged(nameof(StackItems));
         }
     }
-
-    public class RelayCommand : ICommand
-    {
-        private readonly Action _execute;
-        private readonly Func<bool>? _canExecute;
-
-        public RelayCommand(Action execute, Func<bool>? canExecute = null)
-        {
-            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
-            _canExecute = canExecute;
-        }
-
-        public bool CanExecute(object? parameter) => _canExecute?.Invoke() ?? true;
-        public void Execute(object? parameter) => _execute();
-
-        public event EventHandler? CanExecuteChanged;
-    }
-
 }
